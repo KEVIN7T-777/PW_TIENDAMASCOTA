@@ -14,7 +14,7 @@
                     <th  class="center">Id</th>
                     <th class="center">Especie</th>
                     <th class="center">Precio</th>
-                    <th class="center">Cantidad</th>
+                    <th class="center">Cantidad</th> 
                     <th></th>
                     <th class="center">Importe</th>
                 </tr>
