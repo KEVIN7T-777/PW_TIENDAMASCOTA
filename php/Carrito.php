@@ -41,14 +41,14 @@ $pedidos = new Pedidos;
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a href="index.php" class="navbar-brand"><img src="../img/logo.PNG" alt="logo" whith="60" height="60" /></a>
+        <a href="principal.php" class="navbar-brand"><img src="../img/logo.PNG" alt="logo" whith="60" height="60" /></a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.php">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../principal.php">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link disabled" href="Carrito.php" tabindex="-1" aria-disabled="true">Carrito</a>
@@ -78,11 +78,13 @@ $pedidos = new Pedidos;
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Importe</th>
+                    <!--&nbsp: sirve para representar en HTML un espacio en blanco -->
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
+                $sumador_de_cantidades = 0;
                 if (isset($_SESSION['cart_contents']) && $_SESSION['cart_contents'] > 0 && $_SESSION['cart_contents']['total_items'] != 0) {
                     foreach ($_SESSION['cart_contents'] as $items) {
                         if (isset($items['id']) && !empty($items['id'])) {
@@ -90,8 +92,10 @@ $pedidos = new Pedidos;
                                 "</td><td>" . $items['price'] . "</td><td><input type='number' onchange='updateItem(this," . $items['id'] . ");' value='" . $items['cantidad'] .
                                 "'</td><td>$" . $items['subtotal'] . "</td>
                                 <td><a href='SolicitarPedido.php?action=removeItem&id=" . $items['id'] . "' class='btn btn-danger'" . "onclick=''>ELIMINAR</a></td></tr>";
+                            $sumador_de_cantidades = $sumador_de_cantidades + $items['subtotal'];
                         }
                     }
+                    echo " <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><h2><b>Subtotal:</b><h2></td><td>$ " . $sumador_de_cantidades . " </td><td><a href='' class='btn btn-success'>COMPAR</a></td></tr>";
                 } else {
                     echo "<tr><td colspan='6'><center><h1>NO HAY DATOS</h1></center></td></tr>";
                 }
@@ -114,3 +118,23 @@ $pedidos = new Pedidos;
 </body>
 
 </html>
+
+
+
+
+<?php
+//FALTA POR ACABAR EL INSERT EN LA TABLA ORDEN Y DETALLE ANALIZAR:
+/*
+$pagar=$_SESSION['cart_contents']['cart_total'];
+        $query4=$db->query("insert into orden values(0,$cliId,$pagar,now(),now(),1)");
+        $query5=$db->query("select max(ordId) as orden from orden");
+        $row2=$query5->fetch_assoc();
+        $orden=$row2['orden'];
+        foreach($_SESSION['cart_contents'] as $items){
+            if (isset($items['id']) && !empty($items['id'])) { 
+            $query6=$db->query("insert into detalle values(0,$orden,$items[id],$items[cantidad])");
+        }
+    }
+
+ */   
+?>

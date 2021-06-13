@@ -18,7 +18,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'cantidad' => 1
         );
         $insertItem = $pedidos->insert($itemData);
-        $redirectLoc = $insertItem ? 'Carrito.php' : '../index.php';
+        $redirectLoc = $insertItem ? 'Carrito.php' : '../principal.php';
         header("Location: " . $redirectLoc);
     } else if ($_REQUEST['action']  == 'removeItem' && !empty($_REQUEST['id'])) {
         $deleteItem = $pedidos->remove($_REQUEST['id']);

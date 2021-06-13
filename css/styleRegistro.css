@@ -1,0 +1,42 @@
+input[type="text"] {
+    border:  solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;  
+  }
+  input[type="number"] {
+    border:  solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;  
+  }
+  input[type="password"] {
+    border:  solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+  input:focus{
+      /*COLOR PARA LOS BORDES DE LOS INPUTS:*/
+      border-color: dodgerblue;
+      /*La propiedad box-shadow permite proyectar una sombra difuminada desde el marco de casi cualquier elemento.*/
+      box-shadow: 0 0 8px 0 dodgerblue;
+  }
+  
+  /*ESPACIO PARA EL placeholder:*/
+  .icons input{
+      padding-left: 40px;
+  }
+  
+      /*CLASE CREADA EN EL DIV PARA EL ICON ID-CARD:*/
+  .icons{
+      position: relative;
+  }
+  
+  
+  .icons i{
+      position: absolute;
+      left: 0;
+      top: 3px;
+      padding: 9px 8px;
+      color: slategrey;
+      
+  }
+  
