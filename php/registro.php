@@ -104,7 +104,7 @@ if (isset($_POST['REGISTRARSE'])) {
     }
 }
 
-//*******************************VERIFICA SI LA CLAVE ES CORRECTA***********************
+//*******************************VERIFICA SI LA CLAVE ES CORRECTAA***********************
 if (isset($_POST['REGISTRARSE'])) {
     $clave1 = $_POST['txtClave'];
     $clave2 = $_POST['txtConClave'];
